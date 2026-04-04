@@ -73,7 +73,7 @@ void run(int argc, char** argv)
             // TODO
             throw std::runtime_error(CODE_IS_NOT_IMPLEMENTED);
             // cuda::fill_buffer_with_zeros();
-            // cuda::prefix_sum_01_sum_reduction();
+            // cuda::prefix_sum_01_reduction();
             // cuda::prefix_sum_02_prefix_accumulation();
         } else if (context.type() == gpu::Context::TypeVulkan) {
             // TODO
