@@ -104,6 +104,9 @@ void run(int argc, char** argv)
         }
     }
 
+    // Обнуляем выходной буфер, чтобы результат предыдущего кернела не мог замаскировать ошибку следующего
+    c_gpu.fill(0);
+
     {
         std::cout << "Running GOOD matrix kernel..." << std::endl;
 
