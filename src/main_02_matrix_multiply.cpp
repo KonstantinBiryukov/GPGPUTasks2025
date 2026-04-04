@@ -117,6 +117,9 @@ void run(int argc, char** argv)
         std::cout << "______________________________________________________" << std::endl;
         std::cout << "Evaluating algorithm #" << (algorithm_index + 1) << "/" << algorithm_names.size() << ": " << algorithm << std::endl;
 
+        // Обнуляем выходной буфер, чтобы результат предыдущего алгоритма не мог замаскировать ошибку текущего
+        matrix_c_gpu.fill(0.0f);
+
         // Запускаем алгоритм (несколько раз и с замером времени выполнения)
         std::vector<double> times;
         int iters_count = (algorithm == "CPU with OpenMP") ? 1 : 10; // CPU is too slow

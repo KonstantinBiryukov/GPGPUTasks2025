@@ -63,6 +63,9 @@ void run(int argc, char** argv)
         std::cout << "______________________________________________________" << std::endl;
         std::cout << "Evaluating algorithm #" << (algorithm_index + 1) << "/" << algorithm_names.size() << ": " << algorithm << std::endl;
 
+        // Обнуляем выходной буфер, чтобы результат предыдущего алгоритма не мог замаскировать ошибку текущего
+        output_matrix_gpu.fill(0.0f);
+
         // Запускаем алгоритм (несколько раз и с замером времени выполнения)
         std::vector<double> times;
         for (int iter = 0; iter < 10; ++iter) {
