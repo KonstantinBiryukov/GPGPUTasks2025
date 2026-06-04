@@ -19,6 +19,11 @@ __global__ void aplusb_matrix_bad(const unsigned int* a,
     // т.е. если в матрице сделать шаг вверх или вниз на одну ячейку - то в памяти мы шагнем на так называемый stride=width*4 байта
 
     // TODO реализуйте этот кернел - просуммируйте две матрицы так чтобы получить максимально ПЛОХУЮ производительность с точки зрения memory coalesced паттерна доступа
+    int y = get_global_id(0);  // ← swapped! threads stride over rows = bad
+    int x = get_global_id(1);  // ← swapped!
+    if (x >= width || y >= height) return;
+    c[y * width + x] = a[y * width + x] + b[y * width + x];
+
 }
 
 namespace cuda {
